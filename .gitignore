@@ -1,0 +1,27 @@
+# Compiled JSON
+*.json
+!*_conf*.json
+!*
+
+*.pcap
+
+# Build folders
+build*/
+log*/
+pcap*/
+
+src/*.json
+*.p4i
+*.p4rt
+*_p4rt.txt
+
+__pycache__/
+*.py[cod]
+
+
+# Result Folder
+tmp_result*/
+tmp_ctlr_logs/
+
+experiment_results/*
+!experiment_results/dummy.txt

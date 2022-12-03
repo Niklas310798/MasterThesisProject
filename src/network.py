@@ -74,13 +74,35 @@ net.addLink(internets[1], internets[2])
 net.addLink(internets[3], internets[1])
 net.addLink(internets[3], internets[2])
 
-net.setBwAll(10)
 
-net.setBw('i1', 'i2', exp_conf['mininet_bandwidth_limit'])
-net.setBw('i1', 'i3', exp_conf['mininet_bandwidth_limit'])
-net.setBw('i2', 'i3', exp_conf['mininet_bandwidth_limit'])
-net.setBw('i4', 'i3', exp_conf['mininet_bandwidth_limit'])
-net.setBw('i4', 'i2', exp_conf['mininet_bandwidth_limit'])
+####### Cross-Traffic using two Dummy Hosts #######
+# Connected to i1 and i2
+# path:
+# i1: in i1-eth4; out i1-eth3
+# i3: in i3-eth1; out i3-eth2
+# i2: in i2-eth2; out i2-eth4
+#
+# dummy host 1: 10.10.10.1
+# dummy host 2: 10.10.10.2
+net.addHost('dummy1')
+net.addLink('dummy1', 'i1')
+net.setIntfIp('dummy1', 'i1', '10.10.10.1/24')
+net.setDefaultRoute('dummy1', '172.0.0.15/32')
+net.setIntfPort('i1', 'dummy1', 4)
+net.addHost('dummy2')
+net.addLink('dummy2', 'i2')
+net.setIntfIp('dummy2', 'i2', '10.10.10.2/24')
+net.setDefaultRoute('dummy2', '172.0.0.16/32')
+net.setIntfPort('i2', 'dummy2', 4)
+
+
+net.setBwAll(exp_conf['dc_bandwidth_limit'])
+
+net.setBw('i1', 'i2', exp_conf['internet_bandwidth_limit'])
+net.setBw('i1', 'i3', exp_conf['internet_bandwidth_limit'])
+net.setBw('i2', 'i3', exp_conf['internet_bandwidth_limit'])
+net.setBw('i4', 'i3', exp_conf['internet_bandwidth_limit'])
+net.setBw('i4', 'i2', exp_conf['internet_bandwidth_limit'])
 
 net.setBw('bl1','i1', 100)
 net.setBw('bl2','i4', 100)

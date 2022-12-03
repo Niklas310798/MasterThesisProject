@@ -2,7 +2,8 @@
   "number_runs": 5,
   "experiment_duration": 120,
   "programs": ["rerouting", "static", "probed"],
-  "mininet_bandwidth_limit": 5,
+  "dc_bandwidth_limit": 4,
+  "internet_bandwidth_limit": 3,
   "start_mininet_for_every": "run",
   "scenarios": [
     {

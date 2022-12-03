@@ -962,18 +962,24 @@ table_add tb_ipv4_lpm ipv4_forward 172.0.0.1/32 => 1
 table_add tb_ipv4_lpm ipv4_forward 172.0.0.2/32 => 1
 table_add tb_ipv4_lpm ipv4_forward 172.0.0.3/32 => 1
 table_add tb_ipv4_lpm ipv4_forward 172.0.0.4/32 => 1
+table_add tb_ipv4_lpm ipv4_forward 10.10.10.1/24 => 4
+table_add tb_ipv4_lpm ipv4_forward 10.10.10.2/24 => 3
 table_set_default tb_ipv4_lpm drop
 EOF
 
 
 # Internet 2
 simple_switch_CLI --thrift-port 9106 << EOF
+table_add tb_ipv4_lpm ipv4_forward 10.10.10.1/24 => 2
+table_add tb_ipv4_lpm ipv4_forward 10.10.10.2/24 => 4
 table_set_default tb_ipv4_lpm drop
 EOF
 
 
 # Internet 3
 simple_switch_CLI --thrift-port 9107 << EOF
+table_add tb_ipv4_lpm ipv4_forward 10.10.10.1/24 => 1
+table_add tb_ipv4_lpm ipv4_forward 10.10.10.2/24 => 2
 table_set_default tb_ipv4_lpm drop
 EOF
 
