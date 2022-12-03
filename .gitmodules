@@ -1,0 +1,6 @@
+[submodule "src/utils/bmv2"]
+	path = src/utils/bmv2
+	url = https://github.com/Niklas310798/behavioral-model.git
+[submodule "src/utils/bmv2-opt"]
+	path = src/utils/bmv2-opt
+	url = https://github.com/Niklas310798/behavioral-model.git
