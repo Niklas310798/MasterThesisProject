@@ -1,0 +1,41 @@
+Warning: you requested the nanomsg event logger, but bmv2 was compiled without -DBMELOG, and the event logger cannot be activated
+You disabled logging macros when building this binary; however, the log level is currenty set to include 'debug' and possibly 'trace' messages; therefore the logs will be missing most messages
+Calling target program-options parser
+Adding interface s1-eth1 as port 1
+Adding interface s1-eth2 as port 2
+Adding interface s1-eth3 as port 3
+Adding interface s1-eth4 as port 4
+Adding interface s1-eth5 as port 5
+Server listening on 0.0.0.0:50009
+[17:54:01.747] [bmv2] [I] [thread 67945] Starting Thrift server on port 9099
+[17:54:01.747] [bmv2] [I] [thread 67945] Thrift server was started
+[17:54:13.252] [bmv2] [D] [thread 68712] simple_switch target has been notified of a config swap
+[17:54:27.111] [bmv2] [T] [thread 72845] bm_get_config
+[17:54:27.120] [bmv2] [T] [thread 72845] bm_table_add_entry
+[17:54:27.121] [bmv2] [T] [thread 72845] bm_table_add_entry
+[17:54:27.121] [bmv2] [T] [thread 72845] bm_table_add_entry
+[17:54:27.122] [bmv2] [T] [thread 72845] bm_table_add_entry
+[17:54:27.123] [bmv2] [T] [thread 72845] bm_table_add_entry
+[17:54:27.123] [bmv2] [T] [thread 72845] bm_table_add_entry
+[17:54:27.124] [bmv2] [T] [thread 72845] bm_table_add_entry
+[17:54:27.125] [bmv2] [T] [thread 72845] bm_table_add_entry
+[17:54:27.126] [bmv2] [T] [thread 72845] bm_table_add_entry
+[17:55:45.245] [bmv2] [T] [thread 78220] bm_get_config
+[17:55:45.251] [bmv2] [T] [thread 78220] bm_table_add_entry
+[17:55:45.251] [bmv2] [E] [thread 78220] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_upstream.tb_ipv4_lpm': DUPLICATE_ENTRY
+[17:55:45.252] [bmv2] [T] [thread 78220] bm_table_add_entry
+[17:55:45.252] [bmv2] [E] [thread 78220] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_upstream.tb_ipv4_lpm': DUPLICATE_ENTRY
+[17:55:45.253] [bmv2] [T] [thread 78220] bm_table_add_entry
+[17:55:45.253] [bmv2] [E] [thread 78220] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_upstream.tb_ipv4_lpm': DUPLICATE_ENTRY
+[17:55:45.253] [bmv2] [T] [thread 78220] bm_table_add_entry
+[17:55:45.253] [bmv2] [E] [thread 78220] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_upstream.tb_ipv4_lpm': DUPLICATE_ENTRY
+[17:55:45.254] [bmv2] [T] [thread 78220] bm_table_add_entry
+[17:55:45.254] [bmv2] [E] [thread 78220] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_upstream.tb_ipv4_lpm': DUPLICATE_ENTRY
+[17:55:45.254] [bmv2] [T] [thread 78220] bm_table_add_entry
+[17:55:45.254] [bmv2] [E] [thread 78220] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_upstream.tb_ipv4_lpm': DUPLICATE_ENTRY
+[17:55:45.255] [bmv2] [T] [thread 78220] bm_table_add_entry
+[17:55:45.255] [bmv2] [E] [thread 78220] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_upstream.tb_ipv4_lpm': DUPLICATE_ENTRY
+[17:55:45.255] [bmv2] [T] [thread 78220] bm_table_add_entry
+[17:55:45.255] [bmv2] [E] [thread 78220] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_upstream.tb_ipv4_lpm': DUPLICATE_ENTRY
+[17:55:45.256] [bmv2] [T] [thread 78220] bm_table_add_entry
+[17:55:45.256] [bmv2] [E] [thread 78220] Error when trying to add entry to table 'int_vxlan_egress.int_transit.tb_int_transit': DUPLICATE_ENTRY

@@ -1,0 +1,310 @@
+Warning: you requested the nanomsg event logger, but bmv2 was compiled without -DBMELOG, and the event logger cannot be activated
+You disabled logging macros when building this binary; however, the log level is currenty set to include 'debug' and possibly 'trace' messages; therefore the logs will be missing most messages
+Calling target program-options parser
+Adding interface l2-eth1 as port 1
+Adding interface l2-eth2 as port 2
+Adding interface l2-eth3 as port 3
+Adding interface l2-eth4 as port 4
+Adding interface l2-cpu-eth0 as port 5
+Server listening on 0.0.0.0:50002
+[17:53:52.634] [bmv2] [I] [thread 67812] Starting Thrift server on port 9092
+[17:53:52.634] [bmv2] [I] [thread 67812] Thrift server was started
+[17:54:12.811] [bmv2] [D] [thread 68498] simple_switch target has been notified of a config swap
+[17:54:26.108] [bmv2] [T] [thread 72818] bm_get_config
+[17:54:26.114] [bmv2] [T] [thread 72818] mirroring_sesssion_add
+[17:54:26.115] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.116] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.117] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.117] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.118] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.119] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.120] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.121] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.121] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.122] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.122] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.123] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.124] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.124] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.125] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.125] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.126] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.127] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.127] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.128] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.129] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.129] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.130] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.130] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.131] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.132] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.133] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.134] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.135] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.136] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.136] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.137] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.137] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.138] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.139] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.140] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.140] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.141] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.142] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.142] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.143] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.143] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.145] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.145] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.146] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.147] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.148] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.149] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.150] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.150] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.151] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.151] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.152] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.152] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.153] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.153] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.154] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.155] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.155] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.156] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.156] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.157] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.157] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.158] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.159] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.159] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.160] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.160] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.161] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.161] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.161] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.162] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.162] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.163] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.163] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.164] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.165] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.165] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.166] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.166] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.167] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.168] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.168] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.169] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.170] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.173] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.174] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.174] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.175] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.175] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.176] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.176] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.177] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.178] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.178] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.179] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.179] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:54:26.179] [bmv2] [T] [thread 72818] bm_table_add_entry
+[17:55:44.322] [bmv2] [T] [thread 78197] bm_get_config
+[17:55:44.329] [bmv2] [T] [thread 78197] mirroring_sesssion_add
+[17:55:44.330] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.330] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.local_forward.tb_local_forward': DUPLICATE_ENTRY
+[17:55:44.331] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.331] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.local_forward.tb_local_forward': DUPLICATE_ENTRY
+[17:55:44.332] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.332] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.333] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.333] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.333] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.333] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.334] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.334] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.336] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.336] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.336] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.336] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.344] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.344] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.345] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.345] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.345] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.345] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.346] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.346] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.346] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.346] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.347] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.347] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.348] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.348] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.348] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.348] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.349] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.349] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.350] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.350] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_dst_ip_to_mac': DUPLICATE_ENTRY
+[17:55:44.351] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.351] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_vtep': DUPLICATE_ENTRY
+[17:55:44.351] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.351] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_vtep': DUPLICATE_ENTRY
+[17:55:44.352] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.352] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_vxlan_segment': DUPLICATE_ENTRY
+[17:55:44.352] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.352] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.353] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.353] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.354] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.354] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.354] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.354] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.355] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.355] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.356] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.356] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.356] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.356] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.357] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.357] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.358] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.358] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.358] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.358] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.359] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.359] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.360] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.360] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.360] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.360] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.361] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.361] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_downstream.tb_peer_vtep': DUPLICATE_ENTRY
+[17:55:44.362] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.362] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_activate_source': DUPLICATE_ENTRY
+[17:55:44.362] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.362] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_activate_source': DUPLICATE_ENTRY
+[17:55:44.363] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.363] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.363] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.363] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.364] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.364] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.365] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.365] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.365] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.365] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.366] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.366] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.367] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.367] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.368] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.368] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.369] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.369] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.370] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.370] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.370] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.370] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.371] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.371] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.372] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.372] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.373] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.373] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.374] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.374] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.375] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.375] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.376] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.376] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.377] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.377] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.378] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.378] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.379] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.379] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.380] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.380] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.381] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.381] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.382] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.382] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.383] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.383] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.384] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.384] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.390] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.390] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.391] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.391] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.392] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.392] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.392] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.392] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.393] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.393] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.393] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.393] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.394] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.394] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.394] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.394] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.394] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.394] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.394] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.394] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.394] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.394] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.395] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.395] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.395] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.395] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.395] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.395] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.395] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.395] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.395] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.395] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.396] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.396] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.396] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.396] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.396] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.396] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.396] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.396] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.396] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.396] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.397] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.397] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.397] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.397] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.397] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.397] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.397] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.397] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.398] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.398] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.398] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.398] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.398] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.398] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.398] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.398] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.399] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.399] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.399] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.399] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_source_activation.tb_flow_monitor': DUPLICATE_ENTRY
+[17:55:44.399] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.399] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_upstream.tb_vxlan_forward_l2': DUPLICATE_ENTRY
+[17:55:44.400] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.400] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.vxlan_ingress_upstream.tb_vxlan_forward_l2': DUPLICATE_ENTRY
+[17:55:44.400] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.400] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_sink_config.tb_int_sink': DUPLICATE_ENTRY
+[17:55:44.400] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.400] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_ingress.int_sink_config.tb_int_sink': DUPLICATE_ENTRY
+[17:55:44.400] [bmv2] [T] [thread 78197] bm_table_add_entry
+[17:55:44.400] [bmv2] [E] [thread 78197] Error when trying to add entry to table 'int_vxlan_egress.int_transit.tb_int_transit': DUPLICATE_ENTRY

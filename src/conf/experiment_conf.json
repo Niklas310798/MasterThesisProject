@@ -1,0 +1,25 @@
+{
+  "number_runs": 5,
+  "experiment_duration": 120,
+  "programs": ["rerouting", "static", "probed"],
+  "mininet_bandwidth_limit": 5,
+  "start_mininet_for_every": "run",
+  "scenarios": [
+    {
+      "name":"scenario13",
+      "controller_type": "dynamic",
+      "flow_size_mode": "dynamic",
+      "static_controller_threshold": 0,
+      "dyn_controller_congestion_factor": 3.5,
+      "min_flow_size": 0,
+      "max_flow_size": 100000,
+      "static_flow_size": 0,
+      "target_iperf_bandwidth": "10M",
+      "8_times_x_pairs": 2,
+      "ports_per_server": 1,
+      "probe_pkt_count": 10,
+      "probe_pkt_interval": 1,
+      "probe_pkt_proto": "tcp"
+    }
+  ]
+}
