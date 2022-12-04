@@ -16,7 +16,7 @@ def start_cross_traffic_server(server):
 
 def start_cross_traffic_client(client, server, flow_index):
     flow_size = random.randint(0, 1000000)
-    target_bandwidth = "2M"
+    target_bandwidth = "1M"
 
     # 0: Program name
     # 1: Scenario name
@@ -64,6 +64,8 @@ dummy2_flowindex = 0
 
 client_procs[0] = start_cross_traffic_client(dummy1, dummy2, dummy1_flowindex)
 client_procs[1] = start_cross_traffic_client(dummy2, dummy1, dummy2_flowindex)
+
+print("CrossTraffic: Cross traffic between dummy1 and dummy2 started")
 
 dummy1_flowindex += 1
 dummy2_flowindex += 1

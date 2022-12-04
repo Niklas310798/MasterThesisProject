@@ -26,9 +26,8 @@ def copy_to_shared_folder():
     srcs = ["results", "result_plots", "ctlr_logs"]
     conf_src = "{}/conf/experiment_conf.json".format(root)
 
-    bw = experiment_conf['mininet_bandwidth_limit']
     timestamp = datetime.now().strftime("%d-%b-%Y_%H-%M-%S")
-    dst = "{}/bw{}_{}".format(destination, bw, timestamp)
+    dst = "{}/{}".format(destination, timestamp)
     for src in srcs:
         try:
             shutil.copytree("{}/tmp_{}".format(root, src), "{}/{}".format(dst, src))
@@ -92,9 +91,12 @@ def start_controller(type, scenario, program, run, start_time, initial_config_do
     print("Experiment: started {} controller".format(type))
     return ctlr_p
 
+def start_cross_traffic(program, scenario, run, target_bandwidth):
+    cmd = "sudo python3 utils/cross_traffic.py {0} {1} {2} {3}"
+    cross_traffic_p = Popen(cmd.format(program, scenario, run, target_bandwidth), shell=True)
+
 def configure_nodes():
-    init_command = "cd /home/p4/Niklas-Schwingeler-MA2021/src;./init.sh;"
-    # Popen(init_command, shell=True) # configure nodes
+    init_command = "sudo bash init.sh"
     Popen(init_command, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) # configure nodes without output
     time.sleep(15) # wait until all nodes are readily configured
     print("Experiment: all nodes configured successfully via script")
@@ -119,7 +121,7 @@ def cleanup(reset_mininet):
     Popen("mnexec_commands=$(ps aux|grep mnexec|awk '{print $2}');sudo kill -9 $mnexec_commands 2>&1 >/dev/null", shell=True) # kill mx command stuff
     print("kill mnexec processes")
     time.sleep(2)
-    Popen("mnexec_commands=$(ps aux|grep mx|awk '{print $2}');sudo kill $mnexec_commands -9 2>&1 >/dev/null", shell=True) # kill mx command stuff
+    Popen("mnexec_commands=$(ps aux|grep mx|awk '{print $2}');sudo kill -9 $mnexec_commands 2>&1 >/dev/null", shell=True) # kill mx command stuff
     print("kill mx processes")
     time.sleep(2)
     Popen("mnexec_commands=$(ps aux|grep iperf3|awk '{print $2}');sudo kill -9 $mnexec_commands 2>&1 >/dev/null", shell=True) # kill iperf command processes
@@ -130,6 +132,9 @@ def cleanup(reset_mininet):
     time.sleep(2)
     Popen("trafficgen=$(ps aux|grep send_probes|awk '{print $2}');sudo kill -9 $trafficgen 2>&1 >/dev/null", shell=True) # kill probe traffic generation processes
     print("kill probe processes")
+    time.sleep(2)
+    Popen("crosstraffic=$(ps aux|grep cross_traffic|awk '{print $2}');sudo kill -9 $crosstraffic 2>&1 >/dev/null", shell=True) # kill probe traffic generation processes
+    print("kill cross traffic processes")
     time.sleep(2)
     if reset_mininet:
         Popen("mininet=$(ps aux|grep network.py|awk '{print $2}');sudo kill -9 $mininet 2>&1 >/dev/null", shell=True) # kill mininet
@@ -390,6 +395,9 @@ for scenario in scenarios:
             else:
                 print("Experiment: mininet did not start, skipping", scenario['name'], "program", program, "run", run.format(i))
                 continue
+
+            if experiment_conf['cross_traffic'] == "True":
+                start_cross_traffic(program, scenario['name'], run.format(i), experiment_conf['ct_target_bandwidth'])
 
             print("Experiment: opening a total of {} simultaneous iperf3 connections/pairs".format(scenario["8_times_x_pairs"]*8))
             print("Experiment: each server opening {} iperf port(s)".format(scenario['ports_per_server']))

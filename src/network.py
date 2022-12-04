@@ -116,7 +116,7 @@ net.setBw('l7', 'sw-cpu', 1000)
 net.setBw('l8', 'sw-cpu', 1000)
 
 # net.enableDebuggerAll()
-net.enableLogAll()
+net.disableLogAll()
 net.disablePcapDumpAll()
 
 # Start the network

@@ -1,9 +1,11 @@
 {
-  "number_runs": 5,
-  "experiment_duration": 120,
+  "number_runs": 2,
+  "experiment_duration": 100,
   "programs": ["rerouting", "static", "probed"],
-  "dc_bandwidth_limit": 4,
-  "internet_bandwidth_limit": 3,
+  "dc_bandwidth_limit": 5,
+  "internet_bandwidth_limit": 4,
+  "cross_traffic":"True",
+  "ct_target_bandwidth":"1M",
   "start_mininet_for_every": "run",
   "scenarios": [
     {
@@ -13,9 +15,9 @@
       "static_controller_threshold": 0,
       "dyn_controller_congestion_factor": 3.5,
       "min_flow_size": 0,
-      "max_flow_size": 100000,
+      "max_flow_size": 300000,
       "static_flow_size": 0,
-      "target_iperf_bandwidth": "10M",
+      "target_iperf_bandwidth": "3M",
       "8_times_x_pairs": 2,
       "ports_per_server": 1,
       "probe_pkt_count": 10,
