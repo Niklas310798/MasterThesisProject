@@ -1,7 +1,7 @@
 # Compiled JSON
 *.json
 !*_conf*.json
-!*
+!paths.json
 
 *.pcap
 
@@ -17,6 +17,8 @@ src/*.json
 
 __pycache__/
 *.py[cod]
+
+utils/__pycache__
 
 *.pyc
 
