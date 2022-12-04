@@ -46,6 +46,7 @@ def delete_old_results():
     Popen("rm -rf ./tmp_results && mkdir tmp_results", shell=True) # delete old results and create new results folder
     Popen("rm -rf ./tmp_result_plots && mkdir tmp_result_plots", shell=True) # delete old results and create new results folder
     Popen("rm -rf ./tmp_ctlr_logs && mkdir tmp_ctlr_logs", shell=True) # delete old controller logs and create new controller logs folder
+    Popen("rm -rf ./log/cross_traffic && mkdir log/cross_traffic", shell=True) # delete old controller logs and create new controller logs folder
     print("Experiment: removed old results folders and created new folders")
 
 def init_mininet():

@@ -5,7 +5,7 @@
   "dc_bandwidth_limit": 5,
   "internet_bandwidth_limit": 4,
   "cross_traffic":"True",
-  "ct_target_bandwidth":"1M",
+  "ct_target_bandwidth":"3M",
   "start_mininet_for_every": "run",
   "scenarios": [
     {
@@ -17,7 +17,7 @@
       "min_flow_size": 0,
       "max_flow_size": 300000,
       "static_flow_size": 0,
-      "target_iperf_bandwidth": "3M",
+      "target_iperf_bandwidth": "5M",
       "8_times_x_pairs": 2,
       "ports_per_server": 1,
       "probe_pkt_count": 10,
