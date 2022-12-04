@@ -18,6 +18,7 @@ src/*.json
 __pycache__/
 *.py[cod]
 
+*.pyc
 
 # Result Folder
 tmp_result*/
@@ -25,3 +26,5 @@ tmp_ctlr_logs/
 
 experiment_results/*
 !experiment_results/dummy.txt
+
+log/cross_traffic

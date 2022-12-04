@@ -453,8 +453,8 @@ for internet in working_conf['switches']['internets']:
     try:
         tmp_internet = [internet, SimpleSwitchP4RuntimeAPI(device_id=internet['device_id'],
                                                     grpc_port=internet['grpc_port'],
-                                                    p4rt_path='vxlan_int_p4rt.txt',
-                                                    json_path='vxlan_int.json')]
+                                                    p4rt_path='ipv4_lpm_p4rt.txt',
+                                                    json_path='ipv4_lpm.json')]
         internets.append(tmp_internet)
     except:
         print("Controller: connecting to {} failed, trying again in 1 second".format(internet['name']))
@@ -462,8 +462,8 @@ for internet in working_conf['switches']['internets']:
         try:
             tmp_internet = [internet, SimpleSwitchP4RuntimeAPI(device_id=internet['device_id'],
                                                         grpc_port=internet['grpc_port'],
-                                                        p4rt_path='vxlan_int_p4rt.txt',
-                                                        json_path='vxlan_int.json')]
+                                                        p4rt_path='ipv4_lpm_p4rt.txt',
+                                                        json_path='ipv4_lpm.json')]
             internets.append(tmp_internet)
         except:
             print("Controller: can't connect to {}. Exiting...".format(internet['name']))

@@ -23,26 +23,26 @@ internets = []
 
 for leaf in topo_conf['switches']['leafs']:
     leafs.append(net.addP4RuntimeSwitch(leaf['name'], **{"device_id": leaf['device_id']}))
-    net.setP4Source(leaf['name'], 'vxlan_int.p4')
+    # net.setP4Source(leaf['name'], 'vxlan_int.p4')
     net.enableCpuPort(leaf['name'])
     net.setGrpcPort(leaf['name'], leaf['grpc_port'])
     net.setThriftPort(leaf['name'], leaf['thrift_port'])
 
 for spine in topo_conf['switches']['spines']:
     spines.append(net.addP4RuntimeSwitch(spine['name'], **{"device_id": spine['device_id']}))
-    net.setP4Source(spine['name'], 'vxlan_int.p4')
+    # net.setP4Source(spine['name'], 'vxlan_int.p4')
     net.setGrpcPort(spine['name'], spine['grpc_port'])
     net.setThriftPort(spine['name'], spine['thrift_port'])
 
 for borderleaf in topo_conf['switches']['borderleafs']:
     borderleafs.append(net.addP4RuntimeSwitch(borderleaf['name'], **{"device_id": borderleaf['device_id']}))
-    net.setP4Source(borderleaf['name'], 'vxlan_int.p4')
+    # net.setP4Source(borderleaf['name'], 'vxlan_int.p4')
     net.setGrpcPort(borderleaf['name'], borderleaf['grpc_port'])
     net.setThriftPort(borderleaf['name'], borderleaf['thrift_port'])
 
 for internet in topo_conf['switches']['internets']:
     internets.append(net.addP4RuntimeSwitch(internet['name'], **{"device_id": internet['device_id']}))
-    net.setP4Source(internet['name'], 'ipv4_lpm.p4')
+    # net.setP4Source(internet['name'], 'ipv4_lpm.p4')
     net.setGrpcPort(internet['name'], internet['grpc_port'])
     net.setThriftPort(internet['name'], internet['thrift_port'])
 
@@ -86,13 +86,13 @@ net.addLink(internets[3], internets[2])
 # dummy host 2: 10.10.10.2
 net.addHost('dummy1')
 net.addLink('dummy1', 'i1')
-net.setIntfIp('dummy1', 'i1', '10.10.10.1/24')
-net.setDefaultRoute('dummy1', '172.0.0.15/32')
+net.setIntfIp('dummy1', 'i1', '10.10.1.1/24')
+net.setIntfMac('dummy1', 'i1', '10:10:00:00:00:01')
 net.setIntfPort('i1', 'dummy1', 4)
 net.addHost('dummy2')
 net.addLink('dummy2', 'i2')
-net.setIntfIp('dummy2', 'i2', '10.10.10.2/24')
-net.setDefaultRoute('dummy2', '172.0.0.16/32')
+net.setIntfIp('dummy2', 'i2', '10.20.1.1/24')
+net.setIntfMac('dummy2', 'i2', '10:20:00:00:00:01')
 net.setIntfPort('i2', 'dummy2', 4)
 
 
@@ -116,7 +116,7 @@ net.setBw('l7', 'sw-cpu', 1000)
 net.setBw('l8', 'sw-cpu', 1000)
 
 # net.enableDebuggerAll()
-net.disableLogAll()
+net.enableLogAll()
 net.disablePcapDumpAll()
 
 # Start the network

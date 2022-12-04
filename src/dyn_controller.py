@@ -87,6 +87,9 @@ def install_inital_rules_p4runtime(leafs, spines, borderleafs, internets):
     # table_add tb_ipv4_lpm ipv4_forward 172.0.0.6/32 => 3
     # table_add tb_ipv4_lpm ipv4_forward 172.0.0.7/32 => 2
     # table_add tb_ipv4_lpm ipv4_forward 172.0.0.8/32 => 3
+    #
+    # table_add tb_ipv4_lpm ipv4_forward 10.10.1.1/24 => 4
+    # table_add tb_ipv4_lpm ipv4_forward 10.20.1.1/24 => 3
     i1 = internets[0][1]
     i1.table_add(table_name="tb_ipv4_lpm", action_name="ipv4_forward", match_keys=["172.0.0.5"], action_params=["2"])
     i1.table_add(table_name="tb_ipv4_lpm", action_name="ipv4_forward", match_keys=["172.0.0.6"], action_params=["3"])
@@ -102,6 +105,9 @@ def install_inital_rules_p4runtime(leafs, spines, borderleafs, internets):
     # table_add tb_ipv4_lpm ipv4_forward 172.0.0.6/32 => 3
     # table_add tb_ipv4_lpm ipv4_forward 172.0.0.7/32 => 2
     # table_add tb_ipv4_lpm ipv4_forward 172.0.0.8/32 => 3
+    #
+    # table_add tb_ipv4_lpm ipv4_forward 10.10.1.1/24 => 2
+    # table_add tb_ipv4_lpm ipv4_forward 10.20.1.1/24 => 4
     i2 = internets[1][1]
     i2.table_add(table_name="tb_ipv4_lpm", action_name="ipv4_forward", match_keys=["172.0.0.1"], action_params=["1"])
     i2.table_add(table_name="tb_ipv4_lpm", action_name="ipv4_forward", match_keys=["172.0.0.2"], action_params=["2"])
@@ -121,6 +127,9 @@ def install_inital_rules_p4runtime(leafs, spines, borderleafs, internets):
     # table_add tb_ipv4_lpm ipv4_forward 172.0.0.6/32 => 2
     # table_add tb_ipv4_lpm ipv4_forward 172.0.0.7/32 => 3
     # table_add tb_ipv4_lpm ipv4_forward 172.0.0.8/32 => 2
+    #
+    # table_add tb_ipv4_lpm ipv4_forward 10.10.1.1/24 => 1
+    # table_add tb_ipv4_lpm ipv4_forward 10.20.1.1/24 => 2
     i3 = internets[2][1]
     i3.table_add(table_name="tb_ipv4_lpm", action_name="ipv4_forward", match_keys=["172.0.0.1"], action_params=["2"])
     i3.table_add(table_name="tb_ipv4_lpm", action_name="ipv4_forward", match_keys=["172.0.0.2"], action_params=["1"])
@@ -466,8 +475,8 @@ for internet in working_conf['switches']['internets']:
     try:
         tmp_internet = [internet, SimpleSwitchP4RuntimeAPI(device_id=internet['device_id'],
                                                     grpc_port=internet['grpc_port'],
-                                                    p4rt_path='vxlan_int_p4rt.txt',
-                                                    json_path='vxlan_int.json')]
+                                                    p4rt_path='ipv4_lpm_p4rt.txt',
+                                                    json_path='ipv4_lpm.json')]
         internets.append(tmp_internet)
     except:
         print("Controller: connecting to {} failed, trying again in 1 second".format(internet['name']))
@@ -475,8 +484,8 @@ for internet in working_conf['switches']['internets']:
         try:
             tmp_internet = [internet, SimpleSwitchP4RuntimeAPI(device_id=internet['device_id'],
                                                         grpc_port=internet['grpc_port'],
-                                                        p4rt_path='vxlan_int_p4rt.txt',
-                                                        json_path='vxlan_int.json')]
+                                                        p4rt_path='ipv4_lpm_p4rt.txt',
+                                                        json_path='ipv4_lpm.json')]
             internets.append(tmp_internet)
         except:
             print("Controller: can't connect to {}. Exiting...".format(internet['name']))

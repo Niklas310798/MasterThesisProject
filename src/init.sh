@@ -19,6 +19,14 @@ mx h13 ifconfig h13-eth0 mtu 1200
 mx h14 ifconfig h14-eth0 mtu 1200
 mx h15 ifconfig h15-eth0 mtu 1200
 mx h16 ifconfig h16-eth0 mtu 1200
+mx dummy1 ifconfig dummy1-eth0 mtu 1200
+mx dummy2 ifconfig dummy2-eth0 mtu 1200
+
+mx dummy1 ip route add 10.20.1.0/24 dev dummy1-eth0
+mx dummy2 ip route add 10.10.1.0/24 dev dummy2-eth0
+mx dummy1 arp -s 10.20.1.1 10:20:00:00:00:01
+mx dummy2 arp -s 10.10.1.1 10:10:00:00:00:01
+
 
 for host in "${hosts[@]}"
 do
@@ -962,24 +970,24 @@ table_add tb_ipv4_lpm ipv4_forward 172.0.0.1/32 => 1
 table_add tb_ipv4_lpm ipv4_forward 172.0.0.2/32 => 1
 table_add tb_ipv4_lpm ipv4_forward 172.0.0.3/32 => 1
 table_add tb_ipv4_lpm ipv4_forward 172.0.0.4/32 => 1
-table_add tb_ipv4_lpm ipv4_forward 10.10.10.1/24 => 4
-table_add tb_ipv4_lpm ipv4_forward 10.10.10.2/24 => 3
+table_add tb_ipv4_lpm ipv4_forward 10.10.1.1/24 => 4
+table_add tb_ipv4_lpm ipv4_forward 10.20.1.1/24 => 3
 table_set_default tb_ipv4_lpm drop
 EOF
 
 
 # Internet 2
 simple_switch_CLI --thrift-port 9106 << EOF
-table_add tb_ipv4_lpm ipv4_forward 10.10.10.1/24 => 2
-table_add tb_ipv4_lpm ipv4_forward 10.10.10.2/24 => 4
+table_add tb_ipv4_lpm ipv4_forward 10.10.1.1/24 => 2
+table_add tb_ipv4_lpm ipv4_forward 10.20.1.1/24 => 4
 table_set_default tb_ipv4_lpm drop
 EOF
 
 
 # Internet 3
 simple_switch_CLI --thrift-port 9107 << EOF
-table_add tb_ipv4_lpm ipv4_forward 10.10.10.1/24 => 1
-table_add tb_ipv4_lpm ipv4_forward 10.10.10.2/24 => 2
+table_add tb_ipv4_lpm ipv4_forward 10.10.1.1/24 => 1
+table_add tb_ipv4_lpm ipv4_forward 10.20.1.1/24 => 2
 table_set_default tb_ipv4_lpm drop
 EOF
 
