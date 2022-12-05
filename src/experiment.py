@@ -10,6 +10,7 @@ import os
 import signal
 from datetime import datetime
 import shutil
+import psutil
 from utils.traffic_gen import TrafficGenerator
 from p4utils.utils.helper import check_listening_on_port
 
@@ -75,10 +76,24 @@ def check_mininet_running():
             all_switches_running = True
             print("Experiment: all switches started and listening on their grpc ports")
             return True
+        if is_network_py_running() == False:
+            print("Experiment: no network.py running")
+            return False
         if time.time() > start + timeout:
             print("Experiment: mininet startup failed, hit timeout")
             cleanup(True)
             return False
+
+def is_network_py_running():
+    counter = 0
+    for p in psutil.process_iter():
+        cmdline = p.cmdline()
+        if "sudo" in cmdline and "python3" in cmdline and "network.py":
+            counter += 1
+    if counter == 1:
+        return False
+    if counter > 1:
+        return True
 
 def start_controller(type, scenario, program, run, start_time, initial_config_done, static_trigger, dyn_trigger):
     if type == "dynamic":
@@ -195,10 +210,12 @@ def evaluate_flow_completion_times(client_server_pairs_list, scenario, programs)
         plt.plot(fcts, fcts_cdf)
         plt.legend(programs)
         plt.xlabel('FCT (s)')
+        plt.xlim(numpy.percentile(fcts, 97))
         plt.ylabel('CDF')
         plt.title("Flow completion time")
         plt.savefig(plotfile.format(scenario))
         program_index += 1
+        print(program, "highest fct:", fcts[:-1], "xlim:", numpy.percentile(fcts, 97))
     plt.clf()
     print("Experiment: number total flows:", flow_counter)
     print("Experiment: number failed flows:", error_counter)
@@ -259,7 +276,7 @@ def evaluate_retransmissions(client_server_pairs_list, scenario, programs):
         # for i in range(len(fcts)):
         #   fcts_ccdf.append(1-(1/len(fcts) * (i + 1)))
         # plt.plot(fcts, fcts_ccdf)
-        plt.xscale('log')
+        # plt.xscale('log')
         plt.legend(programs)
         plt.xlabel('Number retransmissions')
         plt.ylabel('CDF')
@@ -369,6 +386,7 @@ for scenario in scenarios:
             if i < 10:
                 run = "run0{0}"
 
+            cleaned = False
             if experiment_conf['start_mininet_for_every'] == "run":
                 print("\nExperiment: starting mininet for", scenario['name'], program, run.format(i))
                 init_mininet()
@@ -497,6 +515,7 @@ for scenario in scenarios:
                 print("Experiment: shutting down mininet after run")
                 cleanup(True)
                 initial_config_done = False
+                cleaned = True
             else:
                 cleanup(False)
         print("Experiment: finishing", scenario['name'], program)
@@ -504,21 +523,25 @@ for scenario in scenarios:
             print("Experiment: shutting down mininet after program")
             cleanup(True)
             initial_config_done = False
+            cleaned = True
         else:
-            cleanup(False)
+            if not cleaned:
+                cleanup(False)
     print("Experiment: finishing", scenario['name'])
     if experiment_conf['start_mininet_for_every'] == "scenario":
         print("Experiment: shutting down mininet after scenario")
         cleanup(True)
         initial_config_done = False
-    # cleanup(False)
+    else:
+        if not cleaned:
+            cleanup(False)
     # print(client_server_pairs_list)
     evaluate_flow_completion_times(client_server_pairs_list, scenario['name'], experiment_conf['programs'])
     evaluate_retransmissions(client_server_pairs_list, scenario['name'], experiment_conf['programs'])
     print("Experiment: ", scenario['name'], "ended")
 
 copy_to_shared_folder()
-cleanup(True)
+# cleanup(True)
 
 print("")
 print("##################")
