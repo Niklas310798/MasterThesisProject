@@ -170,7 +170,7 @@ def evaluate_flow_completion_times(client_server_pairs_list, scenario, programs)
         if run_index < 10:
             run = "run0{0}"
         print("")
-        print("program", programs[program_index], "run", run.format(run_index))
+        # print("program", programs[program_index], "run", run.format(run_index))
         for csp in csp_list:
             client = csp[0]
             server = csp[1]
@@ -191,7 +191,8 @@ def evaluate_flow_completion_times(client_server_pairs_list, scenario, programs)
                     except:
                         if "error" in data:
                             if data["error"]  == "error - unable to connect to server: Connection refused":
-                                print("ERROR: {} {} {} {} to {} -- Connection refused (flow {})".format(programs[program_index], scenario,  run.format(run_index), client[0], server[0], flow_number))
+                                a = 1
+                                # print("ERROR: {} {} {} {} to {} -- Connection refused (flow {})".format(programs[program_index], scenario,  run.format(run_index), client[0], server[0], flow_number))
                         else:
                             print("error in iperf3 json file ", logfile.format(programs[program_index], scenario,  run.format(run_index), port_number, client[0], server[0], flow_number))
                         error_counter += 1
@@ -215,8 +216,9 @@ def evaluate_flow_completion_times(client_server_pairs_list, scenario, programs)
         plt.title("Flow completion time")
         plt.savefig(plotfile.format(scenario))
         program_index += 1
-        print(program, "highest fct:", fcts[-1], "xlim:", numpy.percentile(fcts, 97))
+        # print(program, "highest fct:", fcts[-1], "xlim:", numpy.percentile(fcts, 98))
     plt.clf()
+    print("Experiment: FCTss evaluated")
     print("Experiment: number total flows:", flow_counter)
     print("Experiment: number failed flows:", error_counter)
 
@@ -233,7 +235,7 @@ def evaluate_retransmissions(client_server_pairs_list, scenario, programs):
         if run_index < 10:
             run = "run0{0}"
         print("")
-        print("program", programs[program_index], "run", run.format(run_index))
+        # print("program", programs[program_index], "run", run.format(run_index))
         for csp in csp_list:
             client = csp[0]
             server = csp[1]
@@ -254,7 +256,8 @@ def evaluate_retransmissions(client_server_pairs_list, scenario, programs):
                     except:
                         if "error" in data:
                             if data["error"]  == "error - unable to connect to server: Connection refused":
-                                print("ERROR: {} {} {} {} to {} -- Connection refused (flow {})".format(programs[program_index], scenario,  run.format(run_index), client[0], server[0], flow_number))
+                                b = 1
+                                # print("ERROR: {} {} {} {} to {} -- Connection refused (flow {})".format(programs[program_index], scenario,  run.format(run_index), client[0], server[0], flow_number))
                         else:
                             print("error in iperf3 json file ", logfile.format(programs[program_index], scenario,  run.format(run_index), port_number, client[0], server[0], flow_number))
                         error_counter += 1
@@ -271,12 +274,6 @@ def evaluate_retransmissions(client_server_pairs_list, scenario, programs):
         for i in range(len(fcts)):
             fcts_cdf.append(1/len(fcts) * (i + 1))
         plt.plot(fcts, fcts_cdf)
-        # fcts = numpy.sort(fcts_list[program_index])
-        # fcts_ccdf = []
-        # for i in range(len(fcts)):
-        #   fcts_ccdf.append(1-(1/len(fcts) * (i + 1)))
-        # plt.plot(fcts, fcts_ccdf)
-        # plt.xscale('log')
         plt.legend(programs)
         plt.xlabel('Number retransmissions')
         plt.ylabel('CDF')
@@ -331,13 +328,21 @@ def evaluate_reached_bandwidths(client_server_pairs_list, scenario, programs):
         else:
             program_index += 1
             run_index = 0
+            print("Experiment: loop through csp list of next program, index:", program_index)
     program_index = 0
-    print(bps_list)
+    # print(bps_list)
     plotfile = "./tmp_result_plots/{0}_bps.png"
     for program in programs:
         tstamp_bps = bps_list[program_index]
         tstamp_bps.sort(key=lambda x: x[0])
-        tstamps, bps = zip(*tstamp_bps)
+        tstamps, bps = list(map(list, zip(*tstamp_bps)))
+        # print(tstamps)
+        # print(bps)
+        first_tstamp = tstamps[0]
+        for i in range(len(tstamps)):
+            tstamps[i] = tstamps[i] - first_tstamp
+        for i in range(len(bps)):
+            bps[i] = round(bps[i] / 1000000, 2)
         plt.plot(tstamps, bps)
         plt.legend(programs)
         plt.xlabel('Tstamps')
@@ -419,7 +424,7 @@ with open("conf/experiment_conf.json") as f:
     experiment_conf = json.load(f)
 
 programs = experiment_conf['programs']
-programs = ['rerouting']
+# programs = ['rerouting']
 # scenarios = []
 scenarios = experiment_conf['scenarios']
 
@@ -542,13 +547,12 @@ for scenario in scenarios:
                     client_proc_index = 0
                     for client_proc in client_probe_mapping[0]:
                         if client_proc.poll() is not None:
-                            iperf_port = current_client_server_pairs[csp_index][iperf_port_index][0]
-                            flow_index = current_client_server_pairs[csp_index][iperf_port_index][1]
-                            new_client_proc = tg.start_iperf_client(program, scenario, run.format(i), client, server, iperf_port, flow_index)
-                            client_probe_mappings[csp_index][0][client_proc_index] = new_client_proc
-                            current_client_server_pairs[csp_index][iperf_port_index][1] += 1
-                            # info = "new flow for {0} to {1} started: #{2}"
-                            # print(info.format(client[0], server[0], flow_index))
+                            if numpy.random.uniform(1.5) >= 0.5:
+                                iperf_port = current_client_server_pairs[csp_index][iperf_port_index][0]
+                                flow_index = current_client_server_pairs[csp_index][iperf_port_index][1]
+                                new_client_proc = tg.start_iperf_client(program, scenario, run.format(i), client, server, iperf_port, flow_index)
+                                client_probe_mappings[csp_index][0][client_proc_index] = new_client_proc
+                                current_client_server_pairs[csp_index][iperf_port_index][1] += 1
                         iperf_port_index += 1
                         client_proc_index += 1
                     csp_index += 1
@@ -557,8 +561,13 @@ for scenario in scenarios:
             client_processes_running = True
             # != 1 because the grep process always creates one pid to be returned
             while client_processes_running:
-                if len(get_iperf_client_pids()) == 2:
-                    print("Experiment: all client processes ended")
+                if len(get_iperf_client_pids()) == 2 or (time.time() - (start_time + experiment_conf['experiment_duration'] + 25)) > 10:
+                    print("")
+                    print("")
+                    if len(get_iperf_client_pids()) == 2:
+                        print("Experiment: all client processes ended")
+                    if (time.time() - (start_time + experiment_conf['experiment_duration'] + 25)) > 10:
+                        print("Experiment: Ending experiment is 10 seconds overdue")
                     client_server_pairs_list.append(current_client_server_pairs)
                     wait = 1
                     os.killpg(os.getpgid(controller_process.pid), signal.SIGINT)
@@ -601,7 +610,7 @@ for scenario in scenarios:
     evaluate_flow_completion_times(client_server_pairs_list, scenario['name'], programs)
     evaluate_retransmissions(client_server_pairs_list, scenario['name'], programs)
 
-    evaluate_reached_bandwidths(client_server_pairs_list, scenario['name'], programs)
+    # evaluate_reached_bandwidths(client_server_pairs_list, scenario['name'], programs)
     copy_to_shared_folder(scenario['name'])
     print("Experiment: ", scenario['name'], "ended")
 # cleanup(True)
