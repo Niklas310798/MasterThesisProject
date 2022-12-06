@@ -15,7 +15,7 @@ from utils.traffic_gen import TrafficGenerator
 from p4utils.utils.helper import check_listening_on_port
 
 
-def copy_to_shared_folder():
+def copy_to_shared_folder(scenario):
     root = os.getcwd()
     root_list = root.split('/')
     root_list[-1] = "experiment_results"
@@ -28,7 +28,7 @@ def copy_to_shared_folder():
     conf_src = "{}/conf/experiment_conf.json".format(root)
 
     timestamp = datetime.now().strftime("%d-%b-%Y_%H-%M-%S")
-    dst = "{}/{}".format(destination, timestamp)
+    dst = "{}/{}_{}".format(destination, scenario, timestamp)
     for src in srcs:
         try:
             shutil.copytree("{}/tmp_{}".format(root, src), "{}/{}".format(dst, src))
@@ -58,7 +58,7 @@ def init_mininet():
     p4_utils_cmd = 'xterm -e "cd /home/p4/Niklas-Schwingeler-MA2021/src; sudo python3 network.py"'
     Popen(p4_utils_cmd, shell=True)
     # print("\nExperiment: starting mininet")
-    time.sleep(15)
+    time.sleep(7)
 
 def check_mininet_running():
     print("Experiment: Checking if Mininet is up and running")
@@ -287,6 +287,70 @@ def evaluate_retransmissions(client_server_pairs_list, scenario, programs):
     print("Number total flows:", flow_counter)
     print("Number failed flows:", error_counter)
 
+def evaluate_reached_bandwidths(client_server_pairs_list, scenario, programs):
+    max_bps = 0
+    bps_list = []
+    program_index = 0
+    run_index = 0
+    flow_counter = 0
+    error_counter = 0
+    for csp_list in client_server_pairs_list:
+        bps_list.append([])
+        run = "run{0}"
+        if run_index < 10:
+            run = "run0{0}"
+        print("")
+        print("program", programs[program_index], "run", run.format(run_index))
+        for csp in csp_list:
+            client = csp[0]
+            server = csp[1]
+            iperf_ports = csp[2:]
+            for iperf_port in iperf_ports:
+                port_number = iperf_port[0]
+                for flow_number in range(iperf_port[1]):
+                    flow_counter += 1
+                    logfile = "./tmp_results/{0}_{1}_{2}_{3}_{4}_{5}_{6}.json"
+                    try:
+                        # logfile format: program, scenario, run, iperf_port, src_host, dst_host, flow_number
+                        f = open(logfile.format(programs[program_index], scenario, run.format(run_index), port_number, client[0], server[0], flow_number))
+                        data = json.load(f)
+                        if data["end"]["sum_received"]["bytes"] != 0:
+                            tstamp_bps = (data["start"]["timestamp"]["timesecs"], data["end"]["sum_received"]["bits_per_second"])
+                            bps_list[program_index].append(tstamp_bps)
+                        elif bps_list[program_index][len(bps_list[program_index]) - 1] > max_bps:
+                            max_bps = bps_list[program_index][len(bps_list[program_index]) - 1]
+                    except:
+                        if "error" in data:
+                            if data["error"]  == "error - unable to connect to server: Connection refused":
+                                print("ERROR: {} {} {} {} to {} -- Connection refused (flow {})".format(programs[program_index], scenario,  run.format(run_index), client[0], server[0], flow_number))
+                        else:
+                            print("error in iperf3 json file ", logfile.format(programs[program_index], scenario,  run.format(run_index), port_number, client[0], server[0], flow_number))
+                        error_counter += 1
+        if run_index < experiment_conf['number_runs'] - 1:
+            run_index += 1
+        else:
+            program_index += 1
+            run_index = 0
+    program_index = 0
+    print(bps_list)
+    plotfile = "./tmp_result_plots/{0}_bps.png"
+    for program in programs:
+        tstamp_bps = bps_list[program_index]
+        tstamp_bps.sort(key=lambda x: x[0])
+        tstamps, bps = zip(*tstamp_bps)
+        plt.plot(tstamps, bps)
+        plt.legend(programs)
+        plt.xlabel('Tstamps')
+        plt.ylabel('Bps')
+        plt.title("Number retransmissions")
+        plt.savefig(plotfile.format(scenario))
+        program_index += 1
+    plt.clf()
+    print("Number total flows:", flow_counter)
+    print("Number failed flows:", error_counter)
+
+    return False
+
 def evaluate_link_utilization(scenario, program, run, links, link_capacity):
     for l in links:
         logfile = "./tmp_results/{0}_{1}_{2}_{3}.tsv"
@@ -355,12 +419,10 @@ with open("conf/experiment_conf.json") as f:
     experiment_conf = json.load(f)
 
 programs = experiment_conf['programs']
-# programs = ['rerouting', 'static']
-
-scenarios = []
+programs = ['rerouting']
+# scenarios = []
 scenarios = experiment_conf['scenarios']
-# scenarios.append(experiment_conf['scenarios'][0])
-# scenarios.append(experiment_conf['scenarios'][1])
+
 
 if experiment_conf['start_mininet_for_every'] == "experiment":
     print("Experiment: starting mininet for entire experiment")
@@ -415,8 +477,8 @@ for scenario in scenarios:
                 print("Experiment: mininet did not start, skipping", scenario['name'], "program", program, "run", run.format(i))
                 continue
 
-            if experiment_conf['cross_traffic'] == "True":
-                start_cross_traffic(program, scenario['name'], run.format(i), experiment_conf['ct_target_bandwidth'])
+            if scenario['cross_traffic'] == "True":
+                start_cross_traffic(program, scenario['name'], run.format(i), scenario['ct_target_bandwidth'])
 
             print("Experiment: opening a total of {} simultaneous iperf3 connections/pairs".format(scenario["8_times_x_pairs"]*8))
             print("Experiment: each server opening {} iperf port(s)".format(scenario['ports_per_server']))
@@ -536,11 +598,12 @@ for scenario in scenarios:
         if not cleaned:
             cleanup(False)
     # print(client_server_pairs_list)
-    evaluate_flow_completion_times(client_server_pairs_list, scenario['name'], experiment_conf['programs'])
-    evaluate_retransmissions(client_server_pairs_list, scenario['name'], experiment_conf['programs'])
-    print("Experiment: ", scenario['name'], "ended")
+    evaluate_flow_completion_times(client_server_pairs_list, scenario['name'], programs)
+    evaluate_retransmissions(client_server_pairs_list, scenario['name'], programs)
 
-copy_to_shared_folder()
+    evaluate_reached_bandwidths(client_server_pairs_list, scenario['name'], programs)
+    copy_to_shared_folder(scenario['name'])
+    print("Experiment: ", scenario['name'], "ended")
 # cleanup(True)
 
 print("")

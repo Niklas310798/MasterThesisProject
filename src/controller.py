@@ -258,6 +258,8 @@ def handle_pkt(pkt):
         tmp_stats[threshold_dict_key] += 1
     tmp_stats["average_tstamp_latency"] = (tmp_stats["packet_count"] * tmp_stats["average_tstamp_latency"] + int_info["tstamp_latency"]) / (tmp_stats["packet_count"] + 1)
     tmp_stats["average_inthop_latency"] = (tmp_stats["packet_count"] * tmp_stats["average_inthop_latency"] + int_info["data"]["total_inthop_latency"]) / (tmp_stats["packet_count"] + 1)
+    tmp_stats["average_tstamp_latency"] = round(tmp_stats["average_tstamp_latency"])
+    tmp_stats["average_inthop_latency"] = round(tmp_stats["average_inthop_latency"])
 
     tmp_stats["packet_count"] = tmp_stats["packet_count"] + 1
 
@@ -268,13 +270,14 @@ def handle_pkt(pkt):
         trigger_msg = None
         if (avg_latency >= trigger):
             last_15 = list(tmp_deque)[-15:]
-            trigger_msg = "Triggered based on current average timestamp latency deque being higher than {}ms ({})".format(trigger, avg_latency)
+            trigger_msg = "current average timestamp latency deque higher than {}ms ({})".format(trigger, avg_latency)
+            trigger_type = "static_trigger"
             tmp_stats["reroute_triggered"] = tmp_stats["reroute_triggered"] + 1
             if program == "rerouting":
-                tmp_stats["events"].append([datetime.now().strftime("%H:%M:%S.%f"), "{}s in experiment".format(time.time() - start_time), last_15, "rerouting_triggered", trigger_msg])
+                tmp_stats["events"].append([datetime.now().strftime("%H:%M:%S.%f"), "{}s in experiment".format(round((time.time() - start_time), 2)), last_15, trigger_type, trigger_msg])
                 update_forwarding_rules(int_info, src_vtep, dst_vtep)
             if program == "probed":
-                tmp_stats["events"].append([datetime.now().strftime("%H:%M:%S.%f"), "{}s in experiment".format(time.time() - start_time), last_15, "rerouting would have been triggered", trigger_msg])
+                tmp_stats["events"].append([datetime.now().strftime("%H:%M:%S.%f"), "{}s in experiment".format(round((time.time() - start_time), 2)), last_15, trigger_type, trigger_msg])
             tmp_deque.clear()
 
     statsHandler.getStats()[tmp_name] = tmp_stats
