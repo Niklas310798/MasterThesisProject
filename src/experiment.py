@@ -234,7 +234,7 @@ def evaluate_retransmissions(client_server_pairs_list, scenario, programs):
         run = "run{0}"
         if run_index < 10:
             run = "run0{0}"
-        print("")
+        # print("")
         # print("program", programs[program_index], "run", run.format(run_index))
         for csp in csp_list:
             client = csp[0]
@@ -296,7 +296,7 @@ def evaluate_reached_bandwidths(client_server_pairs_list, scenario, programs):
         run = "run{0}"
         if run_index < 10:
             run = "run0{0}"
-        print("")
+        # print("")
         print("program", programs[program_index], "run", run.format(run_index))
         for csp in csp_list:
             client = csp[0]
@@ -319,6 +319,7 @@ def evaluate_reached_bandwidths(client_server_pairs_list, scenario, programs):
                     except:
                         if "error" in data:
                             if data["error"]  == "error - unable to connect to server: Connection refused":
+                                a = 1
                                 print("ERROR: {} {} {} {} to {} -- Connection refused (flow {})".format(programs[program_index], scenario,  run.format(run_index), client[0], server[0], flow_number))
                         else:
                             print("error in iperf3 json file ", logfile.format(programs[program_index], scenario,  run.format(run_index), port_number, client[0], server[0], flow_number))
@@ -328,16 +329,15 @@ def evaluate_reached_bandwidths(client_server_pairs_list, scenario, programs):
         else:
             program_index += 1
             run_index = 0
-            print("Experiment: loop through csp list of next program, index:", program_index)
+            # print("Experiment: loop through csp list of next program, index:", program_index)
     program_index = 0
-    # print(bps_list)
+    average_bws = {}
     plotfile = "./tmp_result_plots/{0}_bps.png"
     for program in programs:
         tstamp_bps = bps_list[program_index]
         tstamp_bps.sort(key=lambda x: x[0])
         tstamps, bps = list(map(list, zip(*tstamp_bps)))
-        # print(tstamps)
-        # print(bps)
+        average_bws[program] = round(numpy.mean(bps), 2)
         first_tstamp = tstamps[0]
         for i in range(len(tstamps)):
             tstamps[i] = tstamps[i] - first_tstamp
@@ -350,11 +350,14 @@ def evaluate_reached_bandwidths(client_server_pairs_list, scenario, programs):
         plt.title("Number retransmissions")
         plt.savefig(plotfile.format(scenario))
         program_index += 1
-    plt.clf()
-    print("Number total flows:", flow_counter)
-    print("Number failed flows:", error_counter)
 
-    return False
+    plt.clf()
+    # print("Number total flows:", flow_counter)
+    # print("Number failed flows:", error_counter)
+
+    # print(average_bws)
+    return average_bws
+
 
 def evaluate_link_utilization(scenario, program, run, links, link_capacity):
     for l in links:
@@ -428,6 +431,7 @@ programs = experiment_conf['programs']
 # scenarios = []
 scenarios = experiment_conf['scenarios']
 
+all_scenario_bws = {}
 
 if experiment_conf['start_mininet_for_every'] == "experiment":
     print("Experiment: starting mininet for entire experiment")
@@ -610,10 +614,13 @@ for scenario in scenarios:
     evaluate_flow_completion_times(client_server_pairs_list, scenario['name'], programs)
     evaluate_retransmissions(client_server_pairs_list, scenario['name'], programs)
 
-    # evaluate_reached_bandwidths(client_server_pairs_list, scenario['name'], programs)
+    scenario_bws = evaluate_reached_bandwidths(client_server_pairs_list, scenario['name'], programs)
+    all_scenario_bws[scenario['name']] = scenario_bws
     copy_to_shared_folder(scenario['name'])
     print("Experiment: ", scenario['name'], "ended")
 # cleanup(True)
+
+print(json.dumps(all_scenario_bws, indent = 2))
 
 print("")
 print("##################")
