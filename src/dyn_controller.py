@@ -282,20 +282,20 @@ def handle_pkt(pkt):
         if (mean(last_15) / mean(last_50_to_30)) >= trigger or dequeHandler.getDequeAverage(tmp_name) > 200:
             if mean(last_15) / mean(last_50_to_30) >= trigger:
                 trigger_msg = "average of last 15 ({}) more than {}-times higher than last 30 to 50 ({})".format(mean(last_15), trigger, mean(last_50_to_30))
-                trigger = "dyn_trigger"
+                trigger_type = "dyn_trigger"
             if dequeHandler.getDequeAverage(tmp_name) > 200:
                 trigger_msg = "current average timestamp latency higher than 200ms ({})".format(dequeHandler.getDequeAverage(tmp_name))
-                trigger = "fallback_trigger"
+                trigger_type = "fallback_trigger"
             if mean(last_15) / mean(last_50_to_30) >= trigger and dequeHandler.getDequeAverage(tmp_name) > 200:
                 trigger_msg = "Triggered based on both conditions: average of last 15 ({}) being more than {}-times higher than of last 30 to 50 ({}) AND current average timestamp latency deque being higher than 200ms ({})".format(mean(last_15), trigger, mean(last_50_to_30), dequeHandler.getDequeAverage(tmp_name))
-                trigger = "both_triggers"
+                trigger_type = "both_triggers"
             if program == "rerouting":
                 tmp_stats["reroute_triggered"] = tmp_stats["reroute_triggered"] + 1
-                tmp_stats["events"].append([datetime.now().strftime("%H:%M:%S.%f"), "{}s in experiment".format(round((time.time() - start_time), 2)), last_15, trigger, trigger_msg])
+                tmp_stats["events"].append([datetime.now().strftime("%H:%M:%S.%f"), "{}s in experiment".format(round((time.time() - start_time), 2)), last_15, trigger_type, trigger_msg])
                 update_forwarding_rules(int_info, src_vtep, dst_vtep)
             if program == "probed":
                 tmp_stats["reroute_triggered"] = tmp_stats["reroute_triggered"] + 1
-                tmp_stats["events"].append([datetime.now().strftime("%H:%M:%S.%f"), "{}s in experiment".format(round((time.time() - start_time), 2)), last_15, trigger, trigger_msg])
+                tmp_stats["events"].append([datetime.now().strftime("%H:%M:%S.%f"), "{}s in experiment".format(round((time.time() - start_time), 2)), last_15, trigger_type, trigger_msg])
             tmp_deque.clear()
             # if trigger_msg is not None:
             #     print(trigger_msg)
